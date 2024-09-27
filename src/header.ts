@@ -5,19 +5,10 @@
 /*                                                 */
 /*   By: GLopes <glopes@mader.pt>                  */
 /*                                                 */
-/*   Created: 2024/09/27 12:25:35 by GLopes        */
-/*   Updated: 2024/09/27 12:25:59 by GLopes        */
+/*   Created: 2024/09/27 12:27:54 by kube          */
+/*   Updated: 2024/09/27 12:28:04 by GLopes        */
 /*                                                 */
 /* *********************************************** */
-
-/*#######.
-########",#:
-#########',##".
-##'##'## .##',##.
-## ## ## # ##",#.
-## ## ## ## ##'
-## ## ## :##
-## ## ##*/
 
 import moment = require('moment')
 import { languageDemiliters } from './delimiters'

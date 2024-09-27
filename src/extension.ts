@@ -1,3 +1,15 @@
+/* *********************************************** */
+/*                                                 */
+/*                                                 */
+/*   extension.ts                                  */
+/*                                                 */
+/*   By: GLopes <glopes@mader.pt>                  */
+/*                                                 */
+/*   Created: 2024/09/27 12:27:54 by kube          */
+/*   Updated: 2024/09/27 12:28:16 by GLopes        */
+/*                                                 */
+/* *********************************************** */
+
 import { basename } from 'path'
 import vscode = require('vscode')
 import moment = require('moment')

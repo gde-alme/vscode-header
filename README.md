@@ -1,41 +1,36 @@
-<img
-  src="https://raw.githubusercontent.com/kube/vscode-42header/master/42.png" 
-  width=128>
+# 42 Header Generator for VS Code
 
-> **Searching for Maintainer.**
-> 
-> This project was done 7 years ago, which is an eternity relative to VSCode Lifespan.
-> I don't have time to maintain this, but I see a lot of people doing Pull Requests for it, or creating issues.
-> 
-> As there are no Unit Tests and no CI/CD, it makes it even harder to check for issues and PRs.
->
-> What I'd like to do is to give ownership to an "official" 42 organization on GitHub, where a group of students could maintain and update this project themselves.
->
-> If you are interested in such a thing, please ping me.
+This is a **fork** of the [vscode-42header](https://github.com/kube/vscode-42header) extension originally created by **kube**.
+It generates standardized headers for your projects, helping your version control.
 
-# 42 Header for VSCode
+## Features
 
-This extension provides the 42 header integration in VS Code.
+- Automatically generate the header with your username, email, and timestamps.
+- Customize the header with your own information.
+- Works on any type of file in VS Code.
 
-```bash
-# **************************************************************************** #
-#                                                                              #
-#                                                         :::      ::::::::    #
-#    vscode-header                                      :+:      :+:    :+:    #
-#                                                     +:+ +:+         +:+      #
-#    By: glopes <hello@kube.io>                     +#+  +:+       +#+         #
-#                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2013/11/18 13:37:42 by kube              #+#    #+#              #
-#    Updated: 2016/09/18 13:11:04 by kube             ###   ########.fr        #
-#                                                                              #
-# **************************************************************************** #
-```
+## Installation
 
-## Install
+1. Open VS Code.
+2. Go to the Extensions Marketplace (`Ctrl+Shift+X` or `Cmd+Shift+X` on Mac).
+3. Search for `42 Header`.
+4. Click **Install**.
 
-Launch Quick Open with <kbd>⌘</kbd>+<kbd>P</kbd> and enter
-```
-ext install 42header
+Alternatively, you can install it via the `.vsix` file:
+
+1. Download the `.vsix` file from the releases section of this repository.
+2. Open VS Code and run `Extensions: Install from VSIX...` from the Command Palette (`Ctrl+Shift+P`).
+3. Select the `.vsix` file you downloaded.
+
+## Configuration
+
+To configure the extension, go to your **User Settings** in VS Code and add your username and email:
+
+```json
+{
+  "42header.username": "YourUsername",
+  "42header.email": "YourEmail@example.com"
+}
 ```
 
 ## Usage
@@ -46,24 +41,9 @@ ext install 42header
 
 Header is automatically updated on save.
 
-
-## Configuration
-
-Default values for **username** and **email** are imported from environment variables.
-
-To override these values, specify these properties in *User Settings* :
-
-```ts
-{
-  "42header.username": string,
-  "42header.email": string
-}
-```
-
-
 ## Issues
 
-In case of a bug, or missing feature, please create a [Github Pull Request](https://github.com/kube/vscode-42header/pulls).
+In case of a bug, or missing feature, please create a [Github Issue](https://github.com/gde-alme/vscode-header/issues).
 
 ## License
 
