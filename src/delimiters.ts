@@ -5,11 +5,12 @@
 /*                                                 */
 /*   By: GLopes <glopes@mader.pt>                  */
 /*                                                 */
-/*   Created: 2024/09/27 12:27:54 by kube          */
-/*   Updated: 2024/09/27 12:28:24 by GLopes        */
+/*   Created: 2024/09/27 13:27:42 by GLopes        */
+/*   Updated: 2024/09/27 13:28:02 by GLopes        */
 /*                                                 */
 /* *********************************************** */
 
+const hashes = ['# ', ' #']
 const slashes = ['/* ', ' */']
 const semicolons = [';; ', ' ;;']
 const parens = ['(* ', ' *)']

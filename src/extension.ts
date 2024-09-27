@@ -5,8 +5,8 @@
 /*                                                 */
 /*   By: GLopes <glopes@mader.pt>                  */
 /*                                                 */
-/*   Created: 2024/09/27 12:27:54 by kube          */
-/*   Updated: 2024/09/27 12:28:16 by GLopes        */
+/*   Created: 2024/09/27 13:28:05 by GLopes        */
+/*   Updated: 2024/09/27 13:28:11 by GLopes        */
 /*                                                 */
 /* *********************************************** */
 
@@ -74,24 +74,35 @@ const insertHeaderHandler = () => {
 
   if (supportsLanguage(document.languageId))
     activeTextEditor.edit(editor => {
-      const currentHeader = extractHeader(document.getText())
+      const { header, line } = extractHeader(document.getText())
 
-      if (currentHeader)
+      if (header && line !== null)
         editor.replace(
-          new Range(0, 0, 12, 0),
+          new Range(line - 1, 0, line + 11, 0),
           renderHeader(
             document.languageId,
-            newHeaderInfo(document, getHeaderInfo(currentHeader))
+            newHeaderInfo(document, getHeaderInfo(header))
           )
         )
-      else
+      else {
+        // TODO: Apply this to all languages
+        let initPos = 0;
+        if (document.languageId === 'php') initPos = ((needle: string) => {
+          const lines = document.getText().split(/\r\n|\n/);
+          for (let i = 0; i < lines.length; i++) {
+            if (lines[i].includes(needle)) return i + 1;
+          }
+          return -1;
+        })('<?php');
+        initPos >= 0 || (initPos = 0) && editor.insert(new Position(0, 0), '<?php\n');
         editor.insert(
-          new Position(0, 0),
+          new Position(initPos, 0),
           renderHeader(
             document.languageId,
             newHeaderInfo(document)
           )
         )
+      }
     })
   else
     vscode.window.showInformationMessage(
@@ -105,21 +116,21 @@ const insertHeaderHandler = () => {
 const startUpdateOnSaveWatcher = (subscriptions: vscode.Disposable[]) =>
   vscode.workspace.onWillSaveTextDocument(event => {
     const document = event.document
-    const currentHeader = extractHeader(document.getText())
+    const { header, line } = extractHeader(document.getText())
 
     event.waitUntil(
       Promise.resolve(
-        supportsLanguage(document.languageId) && currentHeader ?
+        supportsLanguage(document.languageId) && header && line !== null ?
           [
             TextEdit.replace(
-              new Range(0, 0, 12, 0),
+              new Range(line - 1, 0, line + 11, 0),
               renderHeader(
                 document.languageId,
-                newHeaderInfo(document, getHeaderInfo(currentHeader))
+                newHeaderInfo(document, getHeaderInfo(header))
               )
             )
           ]
-          : [] // No TextEdit to apply
+          : []
       )
     )
   },

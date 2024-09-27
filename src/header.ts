@@ -5,10 +5,11 @@
 /*                                                 */
 /*   By: GLopes <glopes@mader.pt>                  */
 /*                                                 */
-/*   Created: 2024/09/27 12:27:54 by kube          */
-/*   Updated: 2024/09/27 12:28:04 by GLopes        */
+/*   Created: Invalid date        by               */
+/*   Updated: 2024/09/27 13:28:20 by GLopes        */
 /*                                                 */
 /* *********************************************** */
+
 
 import moment = require('moment')
 import { languageDemiliters } from './delimiters'
@@ -87,11 +88,16 @@ export const supportsLanguage = (languageId: string) =>
 /**
  * Returns current header text if present at top of document
  */
-export const extractHeader = (text: string): string | null => {
-  const headerRegex = `^(.{50,56}(\r\n|\n)){10}`; // TODO: improve regex to match header
-  const match = text.match(headerRegex)
+// TODO: improve regex to match header (might be to generic)
+export const extractHeader = (text: string): { header: string | null, line: number | null } => {
+  let headerRegex = `^(.{50,56}(\r\n|\n)){10}`;
+  let match = text.match(headerRegex)
+  match || (headerRegex = `(.{50,56}(\r\n|\n)){10}`) && (match = text.match(headerRegex));
 
-  return match ? match[0].split('\r\n').join('\n') : null
+  return match ? {
+    header: match[0].split('\r\n').join('\n'),
+    line: text.substring(0, match.index!).split(/\r\n|\n/).length
+  } : { header: null, line: null }
 }
 
 /**

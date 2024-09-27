@@ -2,7 +2,7 @@
   "name": "vscode-header",
   "displayName": "VS Code Header",
   "description": "Header generator for VSCode",
-  "version": "0.42.12",
+  "version": "0.42.17",
   "publisher": "gde-alme",
   "icon": "42.png",
   "repository": {
@@ -20,9 +20,7 @@
   "categories": [
     "Other"
   ],
-  "activationEvents": [
-    "*"
-  ],
+  "activationEvents": [],
   "main": "./out/src/extension",
   "contributes": {
     "configuration": {
