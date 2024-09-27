@@ -1,12 +1,12 @@
 
-      /*#######.
-     ########",#:
-   #########',##".
-  ##'##'## .##',##.
-   ## ## ## # ##",#.
-    ## ## ## ## ##'
-     ## ## ## :##
-      ## ## ##*/
+/*#######.
+########",#:
+#########',##".
+##'##'## .##',##.
+## ## ## # ##",#.
+## ## ## ## ##'
+## ## ## :##
+## ## ##*/
 
 import moment = require('moment')
 import { languageDemiliters } from './delimiters'
@@ -24,17 +24,17 @@ export type HeaderInfo = {
  * Template where each field name is prefixed by $ and is padded with _
  */
 const genericTemplate = `
-********************************************************************************
-*                                                                              *
-*                                                         :::      ::::::::    *
-*    $FILENAME__________________________________        :+:      :+:    :+:    *
-*                                                     +:+ +:+         +:+      *
-*    By: $AUTHOR________________________________    +#+  +:+       +#+         *
-*                                                 +#+#+#+#+#+   +#+            *
-*    Created: $CREATEDAT_________ by $CREATEDBY_       #+#    #+#              *
-*    Updated: $UPDATEDAT_________ by $UPDATEDBY_      ###   ########.fr        *
-*                                                                              *
-********************************************************************************
+*****************************************************
+*                                                   *
+*                                                   *
+*    $FILENAME__________________________________    *
+*                                                   *
+*    By: $AUTHOR________________________________    *
+*                                                   *
+*    Created: $CREATEDAT_________ by $CREATEDBY_    *
+*    Updated: $UPDATEDAT_________ by $UPDATEDBY_    *
+*                                                   *
+*****************************************************
 
 `.substring(1)
 
@@ -42,14 +42,21 @@ const genericTemplate = `
  * Get specific header template for languageId
  */
 const getTemplate = (languageId: string) => {
-  const [left, right] = languageDemiliters[languageId]
-  const width = left.length
+  const delimiters = languageDemiliters[languageId];
+  if (!delimiters) {
+    throw new Error(`Language ${languageId} not supported`)
+  }
+
+  const [left, right] = delimiters;
+  const width = left.length;
 
   // Replace all delimiters with ones for current language
-  return genericTemplate
-    .replace(new RegExp(`^(.{${width}})(.*)(.{${width}})$`, 'gm'),
-    left + '$2' + right)
+  return genericTemplate.replace(
+    new RegExp(`^(.{${width}})(.*)(.{${width}})$`, 'gm'),
+    left + '$2' + right
+  );
 }
+
 
 /**
  * Fit value to correct field width, padded with spaces
@@ -96,20 +103,29 @@ const fieldRegex = (name: string) =>
  * Get value for given field name from header string
  */
 const getFieldValue = (header: string, name: string) => {
-  const [_, offset, field] = genericTemplate.match(fieldRegex(name))
+  const matchResult = genericTemplate.match(fieldRegex(name));
+  if (!matchResult) {
+    throw new Error(`No match found for field name: ${name}`);
+  }
 
-  return header.substr(offset.length, field.length)
+  const [_, offset, field] = matchResult;
+  return header.substr(offset.length, field.length);
 }
 
 /**
  * Set field value in header string
  */
 const setFieldValue = (header: string, name: string, value: string) => {
-  const [_, offset, field] = genericTemplate.match(fieldRegex(name))
+  const matchResult = genericTemplate.match(fieldRegex(name));
+  if (!matchResult) {
+    throw new Error(`Field ${name} not found in template`)
+  }
+
+  const [_, offset, field] = matchResult;
 
   return header.substr(0, offset.length)
     .concat(pad(value, field.length))
-    .concat(header.substr(offset.length + field.length))
+    .concat(header.substr(offset.length + field.length));
 }
 
 /**

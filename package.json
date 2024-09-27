@@ -2,7 +2,7 @@
   "name": "42header",
   "displayName": "42 Header",
   "description": "42 header for VSCode : www.42.fr",
-  "version": "0.42.7",
+  "version": "0.42.8",
   "publisher": "kube",
   "icon": "42.png",
   "repository": {
@@ -15,7 +15,7 @@
   "homepage": "https://github.com/kube/vscode-42header",
   "license": "MIT",
   "engines": {
-    "vscode": "^1.6.0"
+    "vscode": "^1.93.0"
   },
   "categories": [
     "Other"
@@ -55,13 +55,12 @@
   },
   "scripts": {
     "vscode:prepublish": "tsc -p ./",
-    "compile": "tsc -watch -p ./",
-    "postinstall": "node ./node_modules/vscode/bin/install"
+    "compile": "tsc -watch -p ./"
   },
   "devDependencies": {
     "@types/node": "^6.0.45",
-    "typescript": "^2.0.3",
-    "vscode": "^1.0.0"
+    "@types/vscode": "^1.93.0",
+    "typescript": "^5.6.2"
   },
   "dependencies": {
     "moment": "^2.15.0"

@@ -21,9 +21,9 @@ This extension provides the 42 header integration in VS Code.
 # **************************************************************************** #
 #                                                                              #
 #                                                         :::      ::::::::    #
-#    vscode-42header                                    :+:      :+:    :+:    #
+#    vscode-header                                      :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: kube <hello@kube.io>                       +#+  +:+       +#+         #
+#    By: glopes <hello@kube.io>                     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2013/11/18 13:37:42 by kube              #+#    #+#              #
 #    Updated: 2016/09/18 13:11:04 by kube             ###   ########.fr        #

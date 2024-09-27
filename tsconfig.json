@@ -1,14 +1,13 @@
 {
   "compilerOptions": {
+    "target": "es2018", // Use ES2018 or later for AsyncIterable support
     "module": "commonjs",
-    "target": "es5",
     "outDir": "out",
     "lib": [
-      "es6"
-    ],
-    "noImplicitAny": true,
-    "removeComments": true,
+      "es2018"
+    ], // Add 'es2018' for AsyncIterable support
     "sourceMap": true,
+    "strict": true,
     "rootDir": "."
   },
   "exclude": [

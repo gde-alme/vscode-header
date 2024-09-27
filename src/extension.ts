@@ -1,12 +1,12 @@
 
-      /*#######.
-     ########",#:
-   #########',##".
-  ##'##'## .##',##.
-   ## ## ## # ##",#.
-    ## ## ## ## ##'
-     ## ## ## :##
-      ## ## ##*/
+/*#######.
+########",#:
+#########',##".
+##'##'## .##',##.
+## ## ## # ##",#.
+## ## ## ## ##'
+## ## ## :##
+## ## ##*/
 
 import { basename } from 'path'
 import vscode = require('vscode')
@@ -63,8 +63,12 @@ const newHeaderInfo = (document: TextDocument, headerInfo?: HeaderInfo) => {
  * `insertHeader` Command Handler
  */
 const insertHeaderHandler = () => {
-  const { activeTextEditor } = vscode.window
-  const { document } = activeTextEditor
+  const activeTextEditor = vscode.window.activeTextEditor;
+  if (!activeTextEditor) {
+    return;
+  }
+
+  const { document } = activeTextEditor;
 
   if (supportsLanguage(document.languageId))
     activeTextEditor.edit(editor => {
