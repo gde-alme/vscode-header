@@ -1,18 +1,18 @@
 {
-  "name": "42header",
-  "displayName": "42 Header",
-  "description": "42 header for VSCode : www.42.fr",
-  "version": "0.42.8",
-  "publisher": "kube",
+  "name": "vscode-header",
+  "displayName": "VS Code Header",
+  "description": "Header generator for VSCode",
+  "version": "0.42.12",
+  "publisher": "gde-alme",
   "icon": "42.png",
   "repository": {
     "type": "git",
-    "url": "https://github.com/kube/vscode-42header"
+    "url": "https://github.com/gde-alme/vscode-header"
   },
   "bugs": {
-    "url": "https://github.com/kube/vscode-42header/issues"
+    "url": "https://github.com/gde-alme/vscode-header/issues"
   },
-  "homepage": "https://github.com/kube/vscode-42header",
+  "homepage": "https://github.com/gde-alme/vscode-header",
   "license": "MIT",
   "engines": {
     "vscode": "^1.93.0"
@@ -29,11 +29,11 @@
       "properties": {
         "42header.username": {
           "type": "string",
-          "description": "Username to use in 42 headers"
+          "description": "Username to use in header"
         },
         "42header.email": {
           "type": "string",
-          "description": "Email address to use in 42 headers"
+          "description": "Email address to use in header"
         }
       }
     },

@@ -1,13 +1,3 @@
-
-/*#######.
-########",#:
-#########',##".
-##'##'## .##',##.
-## ## ## # ##",#.
-## ## ## ## ##'
-## ## ## :##
-## ## ##*/
-
 import { basename } from 'path'
 import vscode = require('vscode')
 import moment = require('moment')

@@ -1,3 +1,14 @@
+/* *********************************************** */
+/*                                                 */
+/*                                                 */
+/*   header.ts                                     */
+/*                                                 */
+/*   By: GLopes <glopes@mader.pt>                  */
+/*                                                 */
+/*   Created: 2024/09/27 12:25:35 by GLopes        */
+/*   Updated: 2024/09/27 12:25:59 by GLopes        */
+/*                                                 */
+/* *********************************************** */
 
 /*#######.
 ########",#:
@@ -86,7 +97,7 @@ export const supportsLanguage = (languageId: string) =>
  * Returns current header text if present at top of document
  */
 export const extractHeader = (text: string): string | null => {
-  const headerRegex = `^(.{80}(\r\n|\n)){10}`
+  const headerRegex = `^(.{50,56}(\r\n|\n)){10}`; // TODO: improve regex to match header
   const match = text.match(headerRegex)
 
   return match ? match[0].split('\r\n').join('\n') : null
